@@ -1,5 +1,5 @@
 FROM node:alpine AS builder
-WORKDIR /app
+WORKDIR /src/app
 COPY . .
 EXPOSE 80
 RUN npm install && \
