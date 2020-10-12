@@ -18,22 +18,12 @@ jobs:
       - run: npm install
 #      - run: npm test
       - run: npm run build --if-present
-#      - name: npm test
-#        uses: actions/npm@master
-#        with:
-#          args: run test
-#      - name: npm lint
-#       uses: actions/npm@master
-##        with:
- #         args: run lint      
- #     - uses: actions/setup-node@v1
- #       with:
- #         node-version: '12'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1          
-#      - run: npm install      
-#      - run: npm install karma
-#      - run: npm test
+        with:
+          version: latest
+      - name: Available platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
        
