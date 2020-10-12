@@ -16,17 +16,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}      
       - run: npm install
-      - name: npm test
-        uses: actions/npm@master
-        with:
-          args: run test
-      - name: npm lint
-        uses: actions/npm@master
-        with:
-          args: run lint      
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12'
+#      - name: npm test
+#        uses: actions/npm@master
+#        with:
+#          args: run test
+#      - name: npm lint
+#       uses: actions/npm@master
+##        with:
+ #         args: run lint      
+ #     - uses: actions/setup-node@v1
+ #       with:
+ #         node-version: '12'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
