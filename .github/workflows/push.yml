@@ -28,12 +28,17 @@ jobs:
           version: latest
       - name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
-      -
-        name: Docker Build
-        run: |
-            docker build . # will run buildx        
-      - uses: azure/docker-login@v1
+#      -
+#        name: Docker Build
+#        run: |
+#            docker build . # will run buildx        
+      - name: Log into ACR
+        uses: azure/docker-login@v1
         with:
           login-server: tmtestcr.azurecr.io #mycontainer.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+      - name: Docker build
+        run: |
+          docker build . -t tmtestcr.azurecr.io/angularjspoc:${{ github.sha }}
+          docker push tmtestcr.azurecr.io/angularjspoc:${{ github.sha }} 
