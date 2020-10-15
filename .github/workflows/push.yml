@@ -29,7 +29,11 @@ jobs:
       - name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
       -
-        name: Build
+        name: Docker Build
         run: |
             docker build . # will run buildx        
-       
+      - uses: azure/docker-login@v1
+        with:
+          login-server: tmtestcr.azurecr.io #mycontainer.azurecr.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
