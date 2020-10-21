@@ -1,4 +1,4 @@
-FROM node:8.9-alpine as node-angular-cli
+FROM node:alpine as builder
 LABEL authors="TM"
 
 # Building Angular app
