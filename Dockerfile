@@ -1,6 +1,6 @@
 FROM node:alpine AS builder
 WORKDIR /app
-COPY . .
+COPY . /app
 EXPOSE 80
 RUN npm install && \
     npm run build
