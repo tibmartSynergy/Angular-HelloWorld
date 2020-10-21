@@ -1,4 +1,4 @@
-FROM node:alpine as node-angular-cli
+FROM node:alpine as builder
 LABEL authors="TM"
  
 # Building Angular app
@@ -10,7 +10,7 @@ RUN npm run build:ssr
  
 FROM node:alpine
 WORKDIR /app
-COPY --from=node-angular-cli /app/dist ./dist
+COPY --from=builder /app/dist ./dist
 EXPOSE 80
 ENV PORT 80
 CMD [ "node", "dist/server.js" ]
